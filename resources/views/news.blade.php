@@ -30,10 +30,13 @@
                 </section>
                 <section class="col-md-5">
                     <form action="{{ url('/store') }}" method="post">
-                        @csrf
+                        
+                        <!-- @csrf -->
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        
                         <div class="mb-3">
                             <label>News Details</label>
-                            <input type="text" name="News" class="form-control" placeholder="Please enter details">
+                            <input type="text" name="news" class="form-control" placeholder="Please enter news details">
                         </div>
                         <input type="submit" class="btn btn-info" value="Save">
                         <input type="reset" class="btn btn-warning" value="Reset">
@@ -58,10 +61,13 @@
                 </section>
                 <section class="col-md-5">
                     <form action="{{ url('/update/'.$news->id) }}" method="post">
-                        @csrf
+                        
+                        <!-- @csrf -->
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
                         <div class="mb-3">
                             <label>News Details</label>
-                            <input type="text" value="{{ $news->News }}" name="News" class="form-control" placeholder="Please enter details">
+                            <input type="text" value="{{ $news->News }}" name="news" class="form-control" placeholder="Please enter news details">
                         </div>
                         <input type="submit" class="btn btn-info" value="Update">
                         <input type="reset" class="btn btn-warning" value="Reset">
